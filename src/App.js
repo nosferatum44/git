@@ -1,22 +1,20 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from 'styled-components';
 
-import MainPage from './pages/MainPage';
+import MainPageContainer from './containers/MainPageContainer';
 import LoginPageContainer from './containers/LoginPageContainer';
 
 function App({ isLoggedIn }) {
   return (
-    <Wrapper>{isLoggedIn ? <MainPage /> : <LoginPageContainer />}</Wrapper>
+    <Wrapper>
+      {isLoggedIn ? <MainPageContainer /> : <LoginPageContainer />}
+    </Wrapper>
   );
 }
 
-const mapStateToProps = ({ user: { isLoggedIn } }) => ({
-  isLoggedIn,
-});
-export default connect(mapStateToProps)(App);
+export default App;
 
 const Wrapper = styled.div`
   display: flex;

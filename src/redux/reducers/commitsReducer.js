@@ -2,43 +2,38 @@ import { createActions, handleActions } from 'redux-actions';
 
 const initialState = {
   isLoading: false,
-  isLoggedIn: false,
   data: null,
   isError: null,
 };
 
 export const actionCreators = createActions({
-  USER: {
-    SIGNIN: {
+  COMMITS: {
+    GET: {
       REQUEST: () => {},
       SUCCESS: (data) => data,
-      FAILURE: () => {},
+      FAILURE: (error) => error,
     },
-    SIGNOUT: () => {},
   },
 });
 
 export default handleActions(
   {
-    USER: {
-      SIGNIN: {
+    COMMITS: {
+      GET: {
         REQUEST: (state) => ({ ...state, isLoading: true, isError: null }),
         SUCCESS: (state, action) => {
           return {
             ...state,
             data: action.payload,
-            isLoggedIn: true,
             isLoading: false,
           };
         },
-        FAILURE: () => ({
-          isLoggedIn: false,
+        FAILURE: (state) => ({
           isLoading: false,
           data: null,
           isError: true,
         }),
       },
-      SIGNOUT: (state) => ({ ...state, isLoggedIn: false }),
     },
   },
   initialState

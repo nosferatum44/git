@@ -1,8 +1,15 @@
-import { Octokit } from '@octokit/rest';
+import axios from 'axios';
 
-const api = new Octokit({
-  userAgent: 'gitApp v1',
-  baseUrl: 'https://api.github.com',
-});
+let api = null;
 
-export default api;
+function getInitializedApi() {
+  if (api) return api;
+  api = axios.create({
+    timeout: 60000,
+    baseURL: 'https://api.github.com',
+  });
+
+  return api;
+}
+
+export default getInitializedApi();
