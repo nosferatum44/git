@@ -2,15 +2,12 @@ import React, { useState, useEffect } from 'react';
 
 import styled from 'styled-components';
 
-import Image from 'react-bootstrap/Image';
-import logo from '../assets/logo.png';
-
+import Header from '../components/Header';
 import Commits from '../components/Commits';
 import Repositories from '../components/Repositories';
-import Button from '../components/common/Button';
 
 const MainPage = ({
-  data: { login, avatar_url },
+  data: { login, avatar_url: avatar },
   getRepositories,
   repositories,
   getCommits,
@@ -31,14 +28,7 @@ const MainPage = ({
 
   return (
     <Wrapper>
-      <Header>
-        <Logo src={logo} rounded fluid />
-        <Profile>
-          <Avatar src={avatar_url} rounded fluid />
-          <Username>{login}</Username>
-        </Profile>
-        <Button label='Sign out' onClick={signOut} />
-      </Header>
+      <Header {...{ login, avatar, signOut }} />
 
       <Content>
         {showCommits ? (
@@ -51,7 +41,7 @@ const MainPage = ({
           />
         ) : (
           <Repositories
-            {...{ data: repositories, getRepositories, handleClick }}
+            {...{ data: repositories, getRepositories, onClick: handleClick }}
           />
         )}
       </Content>
@@ -64,35 +54,6 @@ export default MainPage;
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-`;
-
-const Header = styled.div`
-  display: flex;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: aliceblue;
-  justify-content: space-between;
-  align-items: center;
-  height: 60px;
-  width: 100%;
-  padding: 20px;
-`;
-const Profile = styled.div`
-  display: flex;
-  align-items: center;
-`;
-const Username = styled.p`
-  margin: 0 20px;
-`;
-
-const Logo = styled(Image)`
-  width: 32px;
-  height: 32px;
-`;
-const Avatar = styled(Image)`
-  width: 32px;
-  height: 32px;
 `;
 
 const Content = styled.div`
