@@ -13,7 +13,7 @@ const Commits = ({ data: { isLoading, data }, onReturn }) => {
     <>
       <Title>Commits</Title>
       <TableWrapper>
-        <Table striped bordered hover>
+        <StyledTable striped bordered hover>
           <Head>
             <HeadRow>
               <HeaderCell>Author</HeaderCell>
@@ -30,7 +30,7 @@ const Commits = ({ data: { isLoading, data }, onReturn }) => {
               </BodyRow>
             ))}
           </Body>
-        </Table>
+        </StyledTable>
       </TableWrapper>
       <Button label='Back to repositories' onClick={onReturn} />
     </>
@@ -45,21 +45,30 @@ const Title = styled.h2`
 
 const TableWrapper = styled.div`
   position: relative;
+  table-layout: fixed;
   height: 100%;
   width: 100%;
   overflow: auto;
   margin-bottom: 20px;
 `;
+
+const StyledTable = styled(Table)`
+  table-layout: fixed;
+`;
+
 const Head = styled.thead``;
 const HeadRow = styled.tr``;
 const HeaderCell = styled.th`
   position: sticky;
   top: 0;
   background-color: white;
+  word-wrap: break-word;
 `;
 
 const Body = styled.tbody`
   overflow-y: auto;
 `;
 const BodyRow = styled.tr``;
-const BodyCell = styled.td``;
+const BodyCell = styled.td`
+  word-wrap: break-word;
+`;

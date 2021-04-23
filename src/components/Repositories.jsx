@@ -13,7 +13,7 @@ const Repositories = ({ data: { isLoading, data }, handleClick }) => {
     <>
       <Title>Repositories</Title>
       <TableWrapper>
-        <Table striped bordered hover>
+        <StyledTable striped bordered hover>
           <Head>
             <HeadRow>
               <HeaderCell>Name</HeaderCell>
@@ -42,7 +42,7 @@ const Repositories = ({ data: { isLoading, data }, handleClick }) => {
               )
             )}
           </Body>
-        </Table>
+        </StyledTable>
       </TableWrapper>
     </>
   );
@@ -61,12 +61,17 @@ const TableWrapper = styled.div`
   overflow: auto;
 `;
 
+const StyledTable = styled(Table)`
+  table-layout: fixed;
+`;
+
 const Head = styled.thead``;
 const HeadRow = styled.tr``;
 const HeaderCell = styled.th`
   position: sticky;
   top: 0;
   background-color: white;
+  word-wrap: break-word;
 `;
 
 const Body = styled.tbody`
@@ -74,5 +79,6 @@ const Body = styled.tbody`
 `;
 const BodyRow = styled.tr``;
 const BodyCell = styled.td`
+  word-wrap: break-word;
   cursor: ${({ hover }) => (hover ? 'pointer' : 'default')};
 `;
