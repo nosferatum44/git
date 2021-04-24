@@ -14,14 +14,23 @@ const getProps = (row, propName, clickableCell, onClick) => {
   return { key: uuidv4() };
 };
 
-const Table = ({ data, headers, propNames, clickableCell, onClick }) => {
+const Table = ({
+  data,
+  headers,
+  propNames,
+  clickableCell,
+  onClick,
+  variant = 'white',
+}) => {
   return (
     <Wrapper>
-      <StyledTable striped bordered hover>
+      <StyledTable variant={variant} striped bordered hover>
         <Head>
           <HeadRow>
             {headers.map((header) => (
-              <HeaderCell key={uuidv4()}>{header}</HeaderCell>
+              <HeaderCell key={uuidv4()} theme={variant}>
+                {header}
+              </HeaderCell>
             ))}
           </HeadRow>
         </Head>
@@ -59,7 +68,7 @@ const HeadRow = styled.tr``;
 const HeaderCell = styled.th`
   position: sticky;
   top: 0;
-  background-color: white;
+  background-color: ${({ theme }) => (theme === 'white' ? 'white' : '#343a40')};
   word-wrap: break-word;
 `;
 

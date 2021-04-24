@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
 
 import Button from '../components/common/Button';
-import Octocat from '../assets/Octocat.jpg';
+import GitHub_Logo from '../assets/GitHub_Logo.png';
 
 const LoginPage = ({ isError, isLoading, getUser }) => {
   const [value, setValue] = useState('');
@@ -23,7 +23,7 @@ const LoginPage = ({ isError, isLoading, getUser }) => {
 
   return (
     <Wrapper>
-      <Logo src={Octocat} />
+      <Logo src={GitHub_Logo} />
       <StyledForm onSubmit={handleSubmit}>
         <Form.Group>
           <Form.Label>Username</Form.Label>
@@ -71,7 +71,7 @@ const Wrapper = styled.div`
 const Logo = styled.img`
   position: absolute;
   width: 200px;
-  transform: translate(0%, -110%);
+  transform: translate(0%, -150%);
 `;
 
 const StyledForm = styled.form`
