@@ -3,9 +3,10 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import Form from 'react-bootstrap/Form';
-
 import Alert from 'react-bootstrap/Alert';
+
 import Button from '../components/common/Button';
+import Octocat from '../assets/Octocat.jpg';
 
 const LoginPage = ({ isError, isLoading, getUser }) => {
   const [value, setValue] = useState('');
@@ -22,6 +23,7 @@ const LoginPage = ({ isError, isLoading, getUser }) => {
 
   return (
     <Wrapper>
+      <Logo src={Octocat} />
       <StyledForm onSubmit={handleSubmit}>
         <Form.Group>
           <Form.Label>Username</Form.Label>
@@ -30,12 +32,14 @@ const LoginPage = ({ isError, isLoading, getUser }) => {
             placeholder='Enter username'
             value={value}
             onChange={(e) => setValue(e.target.value)}
+            required
           />
         </Form.Group>
         <Button
           label='Login'
           isLoading={isLoading}
-          onClick={() => getUser(value)}
+          type='submit'
+          // onClick={() => getUser(value)}
           block
         />
 
@@ -58,10 +62,18 @@ export default LoginPage;
 
 const Wrapper = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
 `;
+
+const Logo = styled.img`
+  position: absolute;
+  width: 200px;
+  transform: translate(0%, -110%);
+`;
+
 const StyledForm = styled.form`
   position: relative;
   background-color: aliceblue;
