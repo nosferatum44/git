@@ -24,7 +24,7 @@ const Table = ({
 }) => {
   return (
     <Wrapper>
-      <StyledTable variant={variant} striped bordered hover>
+      <StyledTable variant={variant} striped hover>
         <Head>
           <HeadRow>
             {headers.map((header) => (
@@ -56,11 +56,14 @@ const Wrapper = styled.div`
   position: relative;
   height: 100%;
   width: 100%;
+  border: 1px solid #d4d6d8;
   overflow: auto;
 `;
 
 const StyledTable = styled(BootstrapTable)`
   table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
 `;
 
 const Head = styled.thead``;
@@ -69,6 +72,7 @@ const HeaderCell = styled.th`
   position: sticky;
   top: 0;
   background-color: ${({ theme }) => (theme === 'white' ? 'white' : '#343a40')};
+  border: 0 !important;
   word-wrap: break-word;
 `;
 

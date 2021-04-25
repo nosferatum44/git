@@ -1,7 +1,7 @@
 import React from 'react';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Global from './styles/global';
+import Global from './styles/Global';
 import styled from 'styled-components';
 
 import MainPageContainer from './containers/MainPageContainer';
@@ -22,6 +22,5 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   height: 100vh;
 `;

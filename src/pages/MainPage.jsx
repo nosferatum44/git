@@ -6,6 +6,8 @@ import Header from '../components/Header';
 import Commits from '../components/Commits';
 import Repositories from '../components/Repositories';
 
+import { Button } from '../components/common';
+
 const MainPage = ({
   data: { login, avatar_url: avatar },
   getRepositories,
@@ -32,13 +34,21 @@ const MainPage = ({
 
       <Content>
         {showCommits ? (
-          <Commits
-            {...{
-              data: commits,
-              getCommits,
-              onReturn: () => setShowCommits(false),
-            }}
-          />
+          <>
+            <Commits
+              {...{
+                data: commits,
+                getCommits,
+                onReturn: () => setShowCommits(false),
+              }}
+            />
+            {!commits.isLoading && (
+              <StyledButton
+                label='Back to repositories'
+                onClick={() => setShowCommits(false)}
+              />
+            )}
+          </>
         ) : (
           <Repositories
             {...{ data: repositories, getRepositories, onClick: handleClick }}
@@ -54,6 +64,9 @@ export default MainPage;
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
 `;
 
 const Content = styled.div`
@@ -61,8 +74,12 @@ const Content = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 100px;
+  margin: 30px 0;
   max-width: 900px;
-  height: 600px;
+  height: 100%;
   overflow: auto;
+`;
+
+const StyledButton = styled(Button)`
+  margin-top: 20px;
 `;

@@ -7,15 +7,16 @@ export const Global = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
   }
+  
   :root {
-      font-size: ${px2vw(24)};
+      font-size: ${px2vw(50)};
 
-      @media (min-width: 768px) {
-        font-size: ${px2vw(18)};
+      @media (min-width: 688px) {
+        font-size: ${px2vw(25)};
       }
 
-      @media (min-width: 1024px) {
-        font-size: ${px2vw(16)};
+      @media (min-width: 992px) {
+        font-size: ${px2vw(12)};
       }
     }
 `;

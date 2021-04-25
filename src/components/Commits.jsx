@@ -2,7 +2,7 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-import { Table, Button, Spinner } from './common';
+import { Table, Spinner } from './common';
 
 const formattedData = (data) =>
   data.map(({ commit: { author: { name, date } }, sha }) => ({
@@ -11,7 +11,7 @@ const formattedData = (data) =>
     sha,
   }));
 
-const Commits = ({ data: { isLoading, data }, onReturn }) => {
+const Commits = ({ data: { isLoading, data } }) => {
   if (isLoading) return <Spinner />;
   if (!data) return null;
 
@@ -23,8 +23,6 @@ const Commits = ({ data: { isLoading, data }, onReturn }) => {
         headers={['Author', 'Sha', 'Date']}
         propNames={['name', 'sha', 'date']}
       />
-
-      <Button label='Back to repositories' onClick={onReturn} />
     </>
   );
 };

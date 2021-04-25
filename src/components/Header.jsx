@@ -24,9 +24,6 @@ export default Header;
 
 const Wrapper = styled.div`
   display: flex;
-  position: fixed;
-  top: 0;
-  left: 0;
   background-color: aliceblue;
   justify-content: space-between;
   align-items: center;
