@@ -11,18 +11,24 @@ const Global = createGlobalStyle`
   html {
     height: -webkit-fill-available;
   }
-  
-  :root {
-      font-size: ${px2vw(50)};
 
-      @media (min-width: 688px) {
-        font-size: ${px2vw(25)};
-      }
+  #root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+    min-height: -webkit-fill-available;
+    font-size: ${px2vw(50)};
 
-      @media (min-width: 992px) {
-        font-size: ${px2vw(15)};
-      }
+    @media (min-width: 688px) {
+     font-size: ${px2vw(25)};
     }
+
+    @media (min-width: 992px) {
+      font-size: ${px2vw(15)};
+    }
+  }
 `;
 
 export default Global;
