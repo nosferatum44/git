@@ -7,6 +7,10 @@ const Global = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
   }
+
+  html {
+    height: -webkit-fill-available;
+  }
   
   :root {
       font-size: ${px2vw(50)};
