@@ -8,6 +8,11 @@ import MainPageContainer from './containers/MainPageContainer';
 import LoginPageContainer from './containers/LoginPageContainer';
 
 function App({ isLoggedIn }) {
+  window.addEventListener('resize', () => {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  });
+
   return (
     <Wrapper>
       <Global />
@@ -23,5 +28,6 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   min-height: -webkit-fill-available;
 `;
