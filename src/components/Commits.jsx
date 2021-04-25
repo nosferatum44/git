@@ -4,13 +4,6 @@ import styled from 'styled-components';
 
 import { Table, Spinner } from './common';
 
-const formattedData = (data) =>
-  data.map(({ commit: { author: { name, date } }, sha }) => ({
-    name,
-    date,
-    sha,
-  }));
-
 const Commits = ({ data: { isLoading, data } }) => {
   if (isLoading) return <Spinner />;
   if (!data) return null;
@@ -19,7 +12,7 @@ const Commits = ({ data: { isLoading, data } }) => {
     <>
       <Title>Commits</Title>
       <Table
-        data={formattedData(data)}
+        data={data}
         headers={['Author', 'Sha', 'Date']}
         propNames={['name', 'sha', 'date']}
       />

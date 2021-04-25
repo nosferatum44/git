@@ -31,8 +31,21 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(commitsActions.commits.get.request());
     try {
       const { status, data, error } = await api.getCommits(username, repo);
-      if (status === 200)
-        return dispatch(commitsActions.commits.get.success(data));
+      if (status === 200) {
+        const formattedData = data.map(
+          ({
+            commit: {
+              author: { name, date },
+            },
+            sha,
+          }) => ({
+            name,
+            date: date.substring(0, 10),
+            sha,
+          })
+        );
+        return dispatch(commitsActions.commits.get.success(formattedData));
+      }
 
       dispatch(commitsActions.commits.get.failure(error));
     } catch (error) {
