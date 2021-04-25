@@ -13,16 +13,22 @@ const Button = ({
   isLoading,
   ...rest
 }) => {
-  return (
-    <Wrapper {...{ variant, onClick, ...rest }}>
-      {isLoading ? (
+  const Content = () => {
+    if (isLoading) {
+      return (
         <>
-          <Spinner animation='border' size='sm' />{' '}
+          <Spinner animation='border' size='sm' />
           <LoadingLabel>{loadingLabel}</LoadingLabel>
         </>
-      ) : (
-        label
-      )}
+      );
+    }
+
+    return label;
+  };
+
+  return (
+    <Wrapper {...{ variant, onClick, ...rest }}>
+      <Content />
     </Wrapper>
   );
 };

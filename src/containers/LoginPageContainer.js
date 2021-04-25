@@ -15,8 +15,9 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(userActions.user.signin.request());
     try {
       const { status, data, error } = await api.getUser(username);
-      if (status === 200)
+      if (status === 200) {
         return dispatch(userActions.user.signin.success(data));
+      }
 
       dispatch(userActions.user.signin.failure(error));
     } catch (error) {

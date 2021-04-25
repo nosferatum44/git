@@ -12,12 +12,15 @@ const Global = createGlobalStyle`
     height: -webkit-fill-available;
   }
 
+  html, body {
+    height: 100%
+  }
+
   #root {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
-    height: calc(var(--vh, 1vh) * 100);
+    height: 100%;
     min-height: -webkit-fill-available;
     font-size: ${px2vw(50)};
 

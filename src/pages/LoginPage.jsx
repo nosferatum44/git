@@ -29,7 +29,7 @@ const LoginPage = ({ isError, isLoading, getUser }) => {
       <StyledForm onSubmit={handleSubmit}>
         <Form.Group>
           <Form.Label>Username</Form.Label>
-          <Form.Control
+          <StyledControl
             type='text'
             placeholder='Enter username'
             value={value}
@@ -37,13 +37,7 @@ const LoginPage = ({ isError, isLoading, getUser }) => {
             required
           />
         </Form.Group>
-        <Button
-          label='Login'
-          isLoading={isLoading}
-          type='submit'
-          // onClick={() => getUser(value)}
-          block
-        />
+        <Button label='Login' isLoading={isLoading} type='submit' block />
 
         {isAlert && (
           <StyledAlert
@@ -87,6 +81,9 @@ const StyledForm = styled.form`
   padding: 20px;
 `;
 
+const StyledControl = styled(Form.Control)`
+  font-size: 16px;
+`;
 const StyledAlert = styled(Alert)`
   position: absolute;
   bottom: -110px;

@@ -18,8 +18,9 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(repositoriesActions.repositories.get.request());
     try {
       const { status, data, error } = await api.getRepositories(username);
-      if (status === 200)
+      if (status === 200) {
         return dispatch(repositoriesActions.repositories.get.success(data));
+      }
 
       dispatch(repositoriesActions.repositories.get.failure(error));
     } catch (error) {
