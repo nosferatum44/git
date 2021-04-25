@@ -8,6 +8,8 @@ import Alert from 'react-bootstrap/Alert';
 import Button from '../components/common/Button';
 import GitHub_Logo from '../assets/GitHub_Logo.png';
 
+import px2vw from '../utils/px2vw';
+
 const LoginPage = ({ isError, isLoading, getUser }) => {
   const [value, setValue] = useState('');
   const [isAlert, setIsAlert] = useState(false);
@@ -69,9 +71,14 @@ const Wrapper = styled.div`
 `;
 
 const Logo = styled.img`
-  position: absolute;
-  width: 200px;
-  transform: translate(0%, -150%);
+  width: ${px2vw(600)};
+
+  @media (min-width: 688px) {
+    width: ${px2vw(350)};
+  }
+  @media (min-width: 992px) {
+    width: ${px2vw(200)};
+  }
 `;
 
 const StyledForm = styled.form`

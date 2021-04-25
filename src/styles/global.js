@@ -16,7 +16,7 @@ const Global = createGlobalStyle`
       }
 
       @media (min-width: 992px) {
-        font-size: ${px2vw(12)};
+        font-size: ${px2vw(15)};
       }
     }
 `;
